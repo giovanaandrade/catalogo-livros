@@ -1,15 +1,15 @@
 package model.bo;
 
+import java.sql.SQLException;
+
 import dao.DaoListaLivros;
 import model.vo.VoListaLivros;
 
 public class BoListaLivros {
 	private DaoListaLivros dao;
-	private VoListaLivros vo;
 
-	public BoListaLivros(DaoListaLivros dao, VoListaLivros vo) {
-
-		this.vo = vo;
+	public BoListaLivros(DaoListaLivros dao) {
+		this.dao = dao;
 	}
 
 	public DaoListaLivros getDao() {
@@ -20,12 +20,7 @@ public class BoListaLivros {
 		this.dao = dao;
 	}
 
-	public VoListaLivros getVo() {
-		return vo;
+	public VoListaLivros getLista() throws SQLException {
+		return this.getDao().getListaLivrosByName();
 	}
-
-	public void setVo(VoListaLivros vo) {
-		this.vo = vo;
-	}
-	
 }
